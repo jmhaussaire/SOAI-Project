@@ -166,8 +166,10 @@ def get_LOI(clusters):
         x0 + dist*uvec[0]*np.sign(np.dot(uvec,vec)),
         y0 + dist*uvec[1]*np.sign(np.dot(uvec,vec))
     ))
+
   final_points = np.array(final_points)
-  
+  return final_points
+
 def plotting(tracks,clusters):
   for t in tracks:
     if t['v_id'] != 'Unspecified':
