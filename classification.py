@@ -170,7 +170,7 @@ def get_LOI(clusters):
   final_points = np.array(final_points)
   return final_points
 
-def plotting(tracks,clusters):
+def plotting(tracks,clusters,LOI):
   for t in tracks:
     if t['v_id'] != 'Unspecified':
       plt.plot(t['x'],t['y'],'x-')
@@ -183,4 +183,4 @@ def plotting(tracks,clusters):
   
     plt.plot(x_mean,y_mean,color='k')
 
-  plt.plot(final_points[:,0],final_points[:,1],'k')
+  plt.plot(LOI[:,0],LOI[:,1],'k')
