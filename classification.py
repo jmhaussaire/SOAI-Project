@@ -9,9 +9,12 @@ import copy
 import itertools
 from tqdm import tqdm_notebook
 
-def get_bbox():
-  all_xml = sorted(glob.glob('outputs_17_02_2020/*.xml',key=os.path.getmtime))
-
+def get_bbox(path,max_file=-1):
+  all_xml = sorted(
+    glob.glob(os.path.join(path,'*.xml'))
+    ,key=os.path.getmtime)
+  all_xml = all_xml[:max_file]
+  
   tracks = []
   ids = []
   pbar = tqdm_notebook(total=len(all_xml))
