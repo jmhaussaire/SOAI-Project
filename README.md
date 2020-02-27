@@ -7,7 +7,7 @@ For this, we have validation data taken alongside the video with a laser that de
 There is a timestamp corresponding to the appearance of the vehicle.
 
 The pipeline should go as follows:
-- [x] Run Yolo on the video and for each frame the vehicles
+- [x] Run Yolo on the video and for each frame determine the vehicles
 - [x] Determine the cluster defining the lanes of the road
 - [x] Determine the LOI (Line Of Interest) : determine the timestamp to compare with the truth dataset.
 - [ ] Determine the start time : Shift between the start of the video and the recording of the truth.
