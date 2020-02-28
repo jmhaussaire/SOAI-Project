@@ -21,10 +21,10 @@ def get_bbox(path,max_file=-1):
     pbar.update()
     root = ET.parse(f).getroot()  
     v_ids = root.findall('object/pose')
-    v_type = root.findall('object/name')
+    v_types = root.findall('object/name')
     xmin = root.findall('object/bndbox/xmin')
     ymin = root.findall('object/bndbox/ymin')
-    for v_id,x,y in zip(v_ids,xmin,ymin):
+    for v_id,v_type,x,y in zip(v_ids,v_types,xmin,ymin):
       try:
         track = tracks[ids.index(v_id.text)]
         track['x'].append(float(x.text))
