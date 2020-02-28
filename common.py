@@ -49,9 +49,7 @@ def process_vid(in_vid_name,seconds_count,yolo,out_folder,csv_out):
   Look at every frame of the video and categorise the vehicles.
   Output an xml file listing the tracks, and a picture with the box.
   output a csv file with the list of timestamp and vehicles
-  """
-  %%time
-
+  """  
   vidreader = VideoStreamReader(
       in_vid_name, seconds_count=seconds_count, seconds_skip=seconds_skip, width=1920, height=1080)
   vidwriter = VideoStreamWriter(
