@@ -21,6 +21,7 @@ def get_bbox(path,max_file=-1):
     pbar.update()
     root = ET.parse(f).getroot()  
     v_ids = root.findall('object/pose')
+    v_type = root.findall('object/name')
     xmin = root.findall('object/bndbox/xmin')
     ymin = root.findall('object/bndbox/ymin')
     for v_id,x,y in zip(v_ids,xmin,ymin):
@@ -32,6 +33,7 @@ def get_bbox(path,max_file=-1):
         ids.append(v_id.text)
         track = dict({
             'v_id' : v_id.text,
+            'type' : v_type.text,
             'x' : [float(x.text)],
             'y' : [float(y.text)]
         })
@@ -90,7 +92,7 @@ def k_means(tracks,n_cluster,max_iter):
   old_clusters = copy.deepcopy(clusters)
   n_iter = 0
   while True:
-    print(n_iter)
+    print('  iteration:',n_iter)
     n_iter+=1
     for c in clusters:
       c['tracks'] = []
