@@ -5,6 +5,7 @@ from tqdm import tqdm_notebook
 import cv2
 from pascal_voc_writer import Writer as LabelWriter
 import pandas as pd
+from common import Detection
 
 def process_vid(in_vid_name,seconds_count,seconds_skip,
                 yolo,
