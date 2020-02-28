@@ -6,7 +6,9 @@ import cv2
 from pascal_voc_writer import Writer as LabelWriter
 import pandas as pd
 
-def process_vid(in_vid_name,seconds_count,seconds_skip,yolo,out_folder,csv_out):
+def process_vid(in_vid_name,seconds_count,seconds_skip,
+                yolo,
+                out_folder,csv_out,out_vid_name):
   """
   Look at every frame of the video and categorise the vehicles.
   Output an xml file listing the tracks, and a picture with the box.
