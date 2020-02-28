@@ -71,8 +71,7 @@ def process_vid(in_vid_name,seconds_count,seconds_skip,
         track.show_history(frame)
         
         vTime = vidreader.capture.get(cv2.CAP_PROP_POS_MSEC) / 1000
-        nowTime = startTime + \
-                  pd.Timedelta(seconds=vTime)
+        nowTime = pd.Timedelta(seconds=vTime)
 
         if captureCSV:
             if track.ovwrClass is not None:
