@@ -1,5 +1,4 @@
 import os
-os.chdir("/gdrive/My Drive/SOAI/")
 import glob
 import matplotlib.pyplot as plt
 import xml.etree.ElementTree as ET
