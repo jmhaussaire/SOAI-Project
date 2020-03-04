@@ -75,17 +75,17 @@ def process_vid(in_vid_name,seconds_count,seconds_skip,
 
         if captureCSV:
             if track.ovwrClass is not None:
-                csv_line = str(nowTime) + "," + \
-                    str(track.ovwrClass) + "," + str(track.direction)
+              csv_line = [str(nowTime),
+                    str(track.ovwrClass),str(track.direction)]
             elif track.res is not None:
-                csv_line = str(nowTime) + "," + \
-                     str(track.res) + "," + str(track.direction)
+              csv_line = [str(nowTime),
+                     str(track.res),str(track.direction)]
             else:
                 print("Hä?")
             with open(csv_out, 'a') as f:
                 writer = csv.writer(f)
-                (timestamp, vehicle, direction) = csv_line.split(',')
-                writer.writerows([csv_line.split(',')])
+                (timestamp, vehicle, direction) = csv_line
+                writer.writerows([csv_line])
                 #print("writing to csv")
             captureCSV = False
 
