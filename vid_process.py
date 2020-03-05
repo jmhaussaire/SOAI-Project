@@ -38,7 +38,7 @@ def process_vid(in_vid_name,seconds_count,seconds_skip,
   # initialize .csv
   with open(csv_out, 'w+') as f:
       writer = csv.writer(f)
-      csv_line = 'timestamp,vehicle,direction'
+      csv_line = 'timestamp,vehicle,direction,id'
       writer.writerows([csv_line.split(',')])
   # nice progress bar:
   pbar = tqdm_notebook(total=vidreader.frame_count - vidreader.frame_skip)
@@ -72,14 +72,17 @@ def process_vid(in_vid_name,seconds_count,seconds_skip,
         
         vTime = vidreader.capture.get(cv2.CAP_PROP_POS_MSEC) / 1000
         nowTime = pd.Timedelta(seconds=vTime)
-
+        print(vTime)
+        vTime = vidreader.capture.get(cv2.CAP_PROP_POS_MSEC) / 1000 
+        print(vTime)
+        
         if captureCSV:
             if track.ovwrClass is not None:
               csv_line = [str(nowTime),
-                    str(track.ovwrClass),str(track.direction)]
+                    str(track.ovwrClass),str(track.direction),str(track.id)]
             elif track.res is not None:
               csv_line = [str(nowTime),
-                     str(track.res),str(track.direction)]
+                     str(track.res),str(track.direction),str(track.id)]
             else:
                 print("Hä?")
             with open(csv_out, 'a') as f:
@@ -99,11 +102,11 @@ def process_vid(in_vid_name,seconds_count,seconds_skip,
                 print("track.res is None?!", track.res)
                 #track.res = track.detections[-1].object_class
             if track.ovwrClass is not None:
-                labelwriter.addObject(track.ovwrClass, bx1, by1, bx2, by2)
+                labelwriter.addObject(track.ovwrClass, bx1, by1, bx2, by2, pose = track.id)
             elif track.res is not None:
-                labelwriter.addObject(track.res, bx1, by1, bx2, by2)
+                labelwriter.addObject(track.res, bx1, by1, bx2, by2, pose = track.id)
             else:
-                labelwriter.addObject("unknown", bx1, by1, bx2, by2)
+                labelwriter.addObject("unknown", bx1, by1, bx2, by2, pose = track.id)
             labelwriter.save(XMLPathName + ".xml")
             #print("write xml")
     
