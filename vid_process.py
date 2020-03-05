@@ -87,7 +87,7 @@ def process_vid(in_vid_name,seconds_count,seconds_skip,
                 print("Hä?")
             with open(csv_out, 'a') as f:
                 writer = csv.writer(f)
-                (timestamp, vehicle, direction) = csv_line
+                #(timestamp, vehicle, direction) = csv_line
                 writer.writerows([csv_line])
                 #print("writing to csv")
             captureCSV = False
